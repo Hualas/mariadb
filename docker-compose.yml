@@ -1,0 +1,20 @@
+version: '3.9'
+services: 
+    mdb: 
+        image: mariadb:10.10.1-rc-jammy
+        restart: always
+        ports: 
+            - 3306:3306
+        volumes: 
+            - ./data:/var/lib/mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: claros
+            MYSQL_USER: wclaros
+            MYSQL_PASSWORD: wclaros
+        networks: 
+            proxy:
+networks: 
+    proxy: 
+        name: core_proxy
+        driver: bridge
+    
